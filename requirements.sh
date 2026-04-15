@@ -1,17 +1,32 @@
-pip install torch==1.1.0
-pip install cython==0.29.13 
-pip install numpy==1.17.2
-sudo apt-get install libhdf5-serial-dev=1.8.16+docs-4ubuntu1.1
-pip install benepar[gpu]==0.1.2 --ignore-installed
-pip install pytorch_pretrained_bert==0.6.2
-pip install sentencepiece==0.1.83
-pip install tensorflow==2.0.0
-pip install tensorboard==2.0.0
-pip install nltk==3.5
+# PyTorch with CUDA 12.1 support (compatible with CUDA 12.2)
+pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu121
+
+# Core dependencies
+pip install cython==3.0.0
+pip install numpy==1.24.3
+pip install sentencepiece==0.1.99
+
+# TensorFlow (for compatibility, optional if not strictly needed)
+pip install tensorflow==2.13.0
+
+# Transformers (modern version that maintains backward compatibility)
+pip install transformers==4.30.0
+
+# TensorBoard
+pip install tensorboard==2.13.0
+pip install tensorboardX==2.6
+
+# NLP tools
+pip install nltk==3.8.1
+
+# Progress bars
+pip install tqdm==4.65.0
+
+# Benepar for parsing
+pip install benepar[gpu]==0.2.0
+
+# Download NLTK data
 python3 -m nltk.downloader punkt averaged_perceptron_tagger
-pip install git+https://github.com/lanpa/tensorboardX
-pip install transformers==2.8.0
-pip install tqdm==4.45.0
 
 # Download pre-trained model
 pip install gdown

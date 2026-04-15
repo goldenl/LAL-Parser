@@ -13,15 +13,20 @@ This is a PyTorch implementation of the parser described in ["Rethinking Self-At
 
 ## Requirements
 
-* Python 3.6 or higher.
+* Ubuntu 20.04 recommended.
+* Python 3.8 or higher.
+* NVIDIA GPU with Ampere support (e.g., RTX 3090) and CUDA 12.x (validated with CUDA 12.2 / driver 535.183.01).
 * The Python package requirements can be installed through the `requirements.sh` file.
+* For Ubuntu system dependencies:
+  * `sudo apt-get update && sudo apt-get install -y libhdf5-dev`
+  * or install from pip: `pip install h5py==3.9.0`
 * Run `make` in ./EVALB. 
 
 ## Pre-trained models
 
 Our best model is available for download [here](https://drive.google.com/file/d/1LC5iVcvgksQhNVJ-CbMigqXnPAaquiA2/view?usp=sharing) ([mirror](https://archive.org/download/neuraladobe-ucsdparser)). It uses XLNet embeddings, HSPG tree representation has 3 layers of self-attention and 1 final 128-dimensional Label Attention Layer with a position-wise feed-forward layer and no residual dropout. On the English Penn Treebank benchmark dataset, our best parser reaches 96.38 F1 score for Constituency Parsing, and 97.42 UAS and 96.26 LAS for Dependency Parsing.
 
-Pre-trained BERT and XLNet weights will be automatically downloaded as needed by the `pytorch-transformers` package.
+Pre-trained BERT and XLNet weights will be automatically downloaded as needed by the `transformers` package.
 
 ## Training
 
@@ -62,7 +67,7 @@ Example running the inference code in a Python virtual environment:
 ```
 mkdir neural-parser
 cd neural-parser
-virtualenv -p python3.6 ./pyenv/neural-parser
+virtualenv -p python3.8 ./pyenv/neural-parser
 source ./pyenv/neural-parser/bin/activate
 git clone https://github.com/KhalilMrini/LAL-Parser
 cd LAL-Parser/
@@ -75,11 +80,11 @@ sh parse.sh
 Example running the inference code in a Docker container:
 
 ```
-docker run --interactive --tty ubuntu:18.04 bash
+docker run --interactive --tty ubuntu:20.04 bash
 apt update; apt install -y git nano wget htop python3 python3-pip unzip; git clone https://github.com/KhalilMrini/LAL-Parser
 cd LAL-Parser/
 alias pip=pip3; source requirements.sh
-apt-get install -y libhdf5-serial-dev=1.8.16+docs-4ubuntu1.1
+apt-get install -y libhdf5-dev
 
 # Testing the Neural Adobe-UCSD Parser inference
 alias python=python3 
