@@ -14,7 +14,7 @@ pip install h5py==3.9.0
 # TensorFlow (for compatibility, optional if not strictly needed)
 pip install tensorflow==2.13.0
 
-# Transformers (modern version that maintains backward compatibility)
+# Transformers (keeps support for classic BERT/XLNet model loading APIs used by this project)
 pip install transformers==4.30.0
 
 # TensorBoard
