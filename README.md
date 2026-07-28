@@ -15,7 +15,7 @@ This is a PyTorch implementation of the parser described in ["Rethinking Self-At
 
 * Ubuntu 20.04 recommended.
 * Python 3.8 or higher.
-* NVIDIA GPU with Ampere support (e.g., RTX 3090) and CUDA 12.x (validated with CUDA 12.2 / driver 535.183.01).
+* NVIDIA RTX 3090 (Ampere) is supported with CUDA 12.x drivers when using the updated PyTorch install in `requirements.sh` (validated with CUDA 12.2 / driver 535.183.01).
 * The Python package requirements can be installed through the `requirements.sh` file.
 * For Ubuntu system dependencies:
   * `sudo apt-get update && sudo apt-get install -y libhdf5-dev`
