@@ -13,9 +13,13 @@ This is a PyTorch implementation of the parser described in ["Rethinking Self-At
 
 ## Requirements
 
-* Ubuntu 20.04, Python 3.8 or higher.
-* NVIDIA RTX 3090 (Ampere) is supported with CUDA 12.x drivers when using the updated PyTorch install in `requirements.sh`.
+* Ubuntu 20.04 recommended.
+* Python 3.8 or higher.
+* NVIDIA RTX 3090 (Ampere) is supported with CUDA 12.x drivers when using the updated PyTorch install in `requirements.sh` (validated with CUDA 12.2 / driver 535.183.01).
 * The Python package requirements can be installed through the `requirements.sh` file.
+* For Ubuntu system dependencies:
+  * `sudo apt-get update && sudo apt-get install -y libhdf5-dev`
+  * or install from pip: `pip install h5py==3.9.0`
 * Run `make` in ./EVALB. 
 
 ## Pre-trained models
