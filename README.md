@@ -93,6 +93,22 @@ source parse.sh
 
 To generate a diagram of a parse tree based on the output `output_synconst_0.txt`, see [this list of tools to draw parse trees](https://stackoverflow.com/q/4972571/395857).
 
+### Converting `.tbf` treebank files
+
+To convert Mongolian parse trees in `.tbf` format (for example `data/15655-15666.rtf.sen.tbf`) into files usable by this project:
+
+```bash
+python convert_tbf.py --input data/15655-15666.rtf.sen.tbf
+```
+
+This creates:
+
+* `...const.auto.clean`: bracketed constituency trees compatible with LAL-Parser style input.
+* `...raw.txt`: raw tokenized sentences.
+* `...tagged.txt`: `TAG_word` tokens for `python src_joint/main.py parse --pos-tag 0`.
+
+The script also runs a compatibility check for `--pos-tag 0` formatting and reports any unsafe tokens.
+
 ## Label Attention
 
 The implementation for the Label Attention Layer is in the Python Class `LabelAttention` in the file [`src_joint/KM_parser.py`](src_joint/KM_parser.py).
