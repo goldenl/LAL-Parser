@@ -38,6 +38,18 @@ def parse_tree(tokens: List[str], i: int) -> Tuple[TreeNode, int]:
     if i >= len(tokens) or tokens[i] != "(":
         raise ValueError(f"Expected '(' at token index {i}")
     i += 1
+    if i < len(tokens) and tokens[i] == "(":
+        children: List[TreeNode] = []
+        while i < len(tokens) and tokens[i] == "(":
+            child, i = parse_tree(tokens, i)
+            children.append(child)
+        if i >= len(tokens) or tokens[i] != ")":
+            raise ValueError("Expected ')' to close unlabeled bracket")
+        i += 1
+        if len(children) == 1:
+            return children[0], i
+        return TreeNode(label="ROOT", children=children), i
+
     if i >= len(tokens):
         raise ValueError("Unexpected EOF after '('")
     label = tokens[i]
